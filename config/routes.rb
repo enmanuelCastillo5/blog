@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  get 'registration/new'
+  get 'signin', to: 'session#new', as: :signin
+  post 'signin', to: 'session#create'
+  delete 'signout', to: 'session#destroy', as: :signout
+
   get 'registration', to: 'registration#new', as: :registration
   post 'registration', to: 'registration#create'
   resources :comments

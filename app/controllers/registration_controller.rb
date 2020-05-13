@@ -8,10 +8,10 @@ class RegistrationController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      flash = "Registro exitoso"
+      flash = 'Registro exitoso'
       redirect_to articles_path
     else
-      flash[:error] = "Error al registrar"
+      flash[:error] = 'Error al registrar'
       render :new
     end
   end

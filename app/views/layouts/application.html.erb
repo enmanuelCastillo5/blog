@@ -10,6 +10,13 @@
   </head>
 
   <body id="container">
+    <%- if current_user %>
+      <%= current_user.email %>
+      <br/>
+      <%= link_to 'cerrar session', signout_path, method: :delete %>
+      <%- else %>
+      <%= link_to 'Iniciar session', signin_path %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
