@@ -4,11 +4,40 @@
   <strong>Title:</strong>
   <%= @article.title %>
 </p>
+<p>
+  <strong>Autor:</strong>
+  <%= @article.user.email %>
+</p>
+<p>
+  <strong>Creado en :</strong>
+  <%= l @article.created_at, format: :short %>
+</p>
 
 <p>
   <strong>Content:</strong>
   <%= @article.content %>
 </p>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
+
+<%- if @article.user == current_user%>
+    <%= link_to 'Edit', edit_article_path(@article) %> |
+<% end %>
+
 <%= link_to 'Back', articles_path %>
+
+<h4>nuevo comentario</h4>
+<%= form_for @new_comment do |f|%>
+<%=f.hidden_field :article_id, value: @article.id%>
+  <%=f.text_area :content%>
+  <br>
+  <%=f.submit 'Publicar'%>
+<%end%>
+
+<ul>
+  <%- @article.comments.each do |comment|%>
+  <li>
+    <h3><%= comment.author %></h3>
+    <p><%= comment.content %></p>
+  </li>
+  <%end %>
+</ul>
