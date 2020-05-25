@@ -18,10 +18,11 @@
 
   <div class="field">
     <%= form.label :content %>
-    <%= form.text_area :content %>
+    <%= form.rich_text_area :content %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <br/>
+    <%= form.submit "Guardar", class: "btn btn-primary" %>
   </div>
 <% end %>
