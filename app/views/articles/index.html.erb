@@ -15,7 +15,7 @@
           <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
           <div class="card-body">
             <h2 class="card-title"><%=article.title.titleize %></h2>
-            <p class="card-text"><%=article.content.truncate(100) %></p>
+            <p class="card-text"><%=article.content.to_plain_text.truncate(100) %></p>
             <%=link_to 'Read More', article, class: 'btn btn-primary' %>
           </div>
           <div class="card-footer text-muted">
